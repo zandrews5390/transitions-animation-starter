@@ -1,0 +1,660 @@
+/*
+    http://meyerweb.com/eric/tools/css/reset/ 
+    v2.0 | 20110126
+    License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* ---------- GLOBAL/MOBILE CUSTOM STYLES ---------- */
+:root {
+    /* Colors from Colormind.io	*/
+    --blk: #141516;
+    --burgundy: #412729;
+    --storm: #5a807c;
+    --mist: #9dbeae;
+    --wht: #eef1ee;
+
+    /* Neutrals */
+    --dk-gray: #222;
+    --med-gray: #555;
+    --lt-gray: #eaeaea;
+
+    /* Fonts by Google Fonts, Pairing by FontJoy */
+    /* Font weights: 500, 600, 700 */
+    --body-fonts: 'Hind Siliguri', Arial, sans-serif;
+    /* Font weights: 100 - 700 */
+    --heading-fonts: 'Josefin Slab', Georgia, serif;
+
+    /* CSS Shadows for Effects */
+    --small-shadow: -3px 3px 6px var(--med-gray);
+    --lg-shadow: -6px 6px 10px var(--med-gray);
+    --filter-shadow: drop-shadow(0 0 0.25rem var(--med-gray));
+}
+
+/* ---------- BODY STYLES ---------- */
+body {
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.35;
+    font-family: var(--body-fonts);
+    background-color: var(--wht);
+    color: var(--dk-gray);
+    background: linear-gradient(300deg,#9dbeae,#eef1ee,#3a524f);
+    background-size: 180% 180%;
+    /* TO DO: Uncomment the line below and keyframes to add an animated gradient to the page background. I used https://animated-gradient-background-generator.netlify.app/ to generate this gradient using the colors for the site */
+    /* animation: gradient-animation 18s ease infinite; */
+}
+
+/* TO DO: Uncomment the keyframes below */
+/* @keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+} */
+
+/* ---------- SKIP LINK STYLES ---------- */
+/* ----- From: https://webaim.org/techniques/css/invisiblecontent/ ----- */
+#skip {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#skip:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    color: var(--dk-gray);
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-color: var(--wht);
+    outline: 4px solid var(--storm);
+    outline-offset: 0;
+}
+
+/* ---------- HIDDEN/ACCESSIBLE CONTENT STYLES ---------- */
+/* ----- From: https://webaim.org/techniques/css/invisiblecontent/ ----- */
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* ---------- CUSTOM HAMBURGER MENU STYLES WITH CSS ONLY ---------- */
+/* This code is included as an example for you to refer to. It is an accessible hamburger menu that doesn't require JavaScript to function */
+#menuToggle {
+    display: block;
+    position: relative;
+    z-index: 1;
+    top: -0.5rem;
+    user-select: none;
+}
+
+/* The hamburger button hidden inside an input element */
+#menuToggle input {
+    display: block;
+    width: 3.25rem;
+    height: 3.25rem;
+    position: absolute;
+    top: 3px;
+    left: 10px;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+}
+
+#menuToggle input:focus {
+    border-radius: 50%;
+    outline: 4px solid var(--storm);
+    background: transparent;
+    opacity: 1;
+    appearance: none;
+    border: none;
+    box-shadow: none;
+}
+
+#menuToggle label {
+    position: relative;
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+    color: var(--dk-gray);
+}
+
+#menuToggle label span {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    left: 1rem;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: all 0.3s ease;
+}
+
+/* The hamburger menu icon is from an icon library called Anicons that has icons that can be easily animated using the documentation on their site https://typogram.github.io/Anicons/ */
+#menuIcon {
+    font-family: 'Anicons Regular', sans-serif;
+    font-variation-settings: 'TIME' 1;
+    font-size: 3rem;
+    color: var(--wht);
+    transition: font-variation-settings 0.4s ease;
+}
+
+#menuToggle input:checked + label span {
+    font-variation-settings: 'TIME' 100;
+    color: var(--wht);
+}
+
+/* Use absolute positioning to place the menu off-screen */
+#menu {
+    position: absolute;
+    width: 102vw;
+    margin-top: -5rem;
+    padding: 6rem 0 3rem 0;
+    right: 100vw;
+    transition: all 0.3s ease;
+    background-color: var(--dk-gray);
+}
+
+#menuToggle ul {
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+#menu li {
+    list-style-type: none;
+}
+
+/*
+    Slide the menu in from left when the input is checked
+*/
+#menuToggle input:checked ~ ul {
+    right: -1.5rem;
+    visibility: visible;
+}
+
+#menuToggle a {
+    font-family: var(--heading-fonts);
+    font-weight: 700;
+    font-size: 1.75rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dk-gray);
+    background-color: var(--wht);
+    font-weight: 700;
+    padding: 0.5rem;
+    width: 75vw;
+    max-width: 325px;
+    margin: 1rem auto;
+    transition: background-color 0.3s ease;
+}
+
+#menuToggle a:hover{
+    background-color: var(--mist);
+}
+
+/* ---------- HEADER/MAIN/FOOTER STYLES ---------- */
+header, main, footer{
+    padding: 1rem;
+    max-width: calc(1000px - 2rem);
+    margin: 0 auto;
+}
+
+header, footer{
+    background-color: var(--dk-gray);
+    color: var(--wht);
+}
+
+main{
+    background-color: var(--wht);
+}
+
+footer{
+    text-align: center;
+}
+
+/* ---------- HEADER STYLES ---------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+/* ---------- LINK STYLES ---------- */
+a{
+    display: block;
+    padding: 1rem;
+}
+
+a:hover{
+    text-decoration-color: var(--storm);
+}
+
+a:focus{
+    outline: 4px solid var(--storm);
+    outline-offset: 2px;
+}
+
+/* ---------- HEADING STYLES ---------- */
+h1, h2, h3{
+    font-weight: 700;
+    font-family: var(--heading-fonts);
+    text-align: center;
+}
+
+h1{
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+}
+
+h2{
+    font-size: 2rem;
+    margin: 0.75rem 0;
+}
+
+h3{
+    font-size: 1.75rem;
+    margin: 1rem 0;
+}
+
+/* ---------- IMAGE STYLES ---------- */
+img{
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* ---------- TEXT STYLES ---------- */
+p, main ul{
+    padding: 0.5rem 0;
+    max-width: 65ch;
+    margin: 0 auto;
+}
+
+strong{
+    font-weight: 600;
+}
+
+strong.syntax{
+    display: block;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+pre{
+    background-color: var(--dk-gray);
+    padding-left: 0.5rem;
+    color: var(--wht);
+    width: 100%;
+    overflow-x: scroll;
+}
+
+code{
+    font-family: monospace;
+}
+
+main ul{
+    padding-left: 1.5rem;
+    list-style-type: disc;
+}
+
+main li{
+    margin: 6px 0;
+}
+
+details{
+    padding: 0.5rem;
+    max-width: calc(65ch - 1rem);
+    margin: 0.75rem auto;
+    border: 1px solid var(--dk-gray);
+    transition: all 0.3s ease;
+}
+
+summary{
+    font-weight: 600;
+}
+
+summary::marker{
+    color: var(--burgundy);
+    font-size: 1.25rem;
+}
+
+summary:focus{
+    outline: 4px solid var(--storm);
+    outline-offset: 2px;
+}
+
+details[open] summary{
+    margin-bottom: 0.5rem;
+}
+
+/* ---------- HIDDEN/SHOWN BUTTONS AND IMAGES ---------- */
+.control{
+    display: block;
+    border: none;
+    background-color: transparent;
+    height: 50px;
+    width: auto;
+    border-radius: 50%;
+    position: relative;
+    left: calc(100% - 52px);
+    padding: 0;
+}
+
+.control:focus{
+    outline: 4px solid var(--storm);
+    outline-offset: 2px;
+}
+
+.control img{
+    width: 50px;
+    height: 50px;
+}
+
+/* ---------- ANIMATION SECTION STYLES ---------- */
+/* 
+    Syntax example for the animate shorthand property: 
+    animation: @keyframes | duration | easing-function | delay | iteration-count | direction | name;
+*/
+/* First Dropdown Spinner Animation */
+#animate1 > img{
+    width: 100px;
+    height: 100px;
+    margin: 1rem auto;
+}
+
+.hidden{
+    display: none;
+}
+
+/* TO DO: Add an animation to this image named "spin" that runs for 2.5 seconds, using linear easing, and will run continuously without stopping */
+#animate1 img.animate{
+    
+}
+
+/* TO DO: Create an @keyframes rule here named "spin" that animates the image above by rotating it. It should start at its original rotation and end at 360 degrees */
+
+
+/* Second dropdown animation - heart scale */
+#animate2 > img{
+    width: 100px;
+    height: 100px;
+    margin: 1rem auto;
+}
+
+/* TO DO: Add an animation to this image named "grow" that runs for two seconds, uses ease-in-out as its timing function, and runs continuously without stopping */
+#animate2 img.animate{
+    
+}
+
+/* TO DO: Add an @keyframes rule here named "grow" that animates the image by scaling it. The scale should be at 1 to start and end, and should scale to 1.5 halfway through the animation */
+
+
+/* Third dropdown animation - Timing Example  */
+/* This has been completed for you and is included as an example only */
+#animate3 > img{
+    width: 100px;
+    height: 100px;
+    margin: 1rem auto;
+}
+
+#animate3 img.animate{
+    animation: timing 3s ease-in-out infinite alternate;
+}
+
+@keyframes timing {
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+/* Fourth dropdown animation - Iteration Count Example */
+#animate4 > img{
+    width: 100px;
+    height: 100px;
+    margin: 1rem 0;
+}
+
+/* TO DO: Add an animation here named "slide-in" that runs for three seconds, using the ease-in-out timing function, will run only three times, and uses the alternate animation direction */
+#animate4 img.animate{
+    
+}
+
+@keyframes slide-in {
+    from {
+        /* TO DO: The element should begin at its normal place in the document */
+    }
+
+    to {
+        /* TO DO: The element should end 50vw in the x-direction (horizontal) and should not move at all in the y-direction (vertical) */
+    }
+}
+
+/* Fifth dropdown animation - Direction Example */
+/* This has been completed for you and is included as an example only */
+#animate5 > img{
+    width: 100px;
+    height: 100px;
+    margin: 1rem auto;
+}
+
+#animate5 img.animate{
+    animation: direction 3s ease-in-out infinite alternate;
+}
+
+@keyframes direction {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+/* ---------- TRANSITION SECTION STYLES ---------- */
+#transition a{
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+    margin: 1rem auto;
+    background-color: var(--mist);
+    color: var(--dk-gray);
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: var(--lg-shadow);
+}
+
+/* TO DO: Add a transition to this element for the box shadow that runs for 200 milliseconds */
+#link1{
+    
+}
+
+#link1:hover{
+    box-shadow: var(--small-shadow);
+}
+
+/* TO DO: Add a transition to this element for all properties that will run for 300 milliseconds */
+#link2{
+    border-radius: 1rem;
+}
+
+#link2:hover{
+    border-radius: 0;
+    box-shadow: var(--small-shadow);
+}
+
+/* ---------- TRANSFORMATION SECTION STYLES ---------- */
+#transform a{
+    width: 35px;
+    height: 35px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#link3{
+    background-color: var(--mist);
+    box-shadow: var(--lg-shadow);
+    border-radius: 50%;
+    transition: all 300ms;
+}
+
+#link3 svg{
+    stroke: var(--dk-gray);
+    transition: all 500ms;
+}
+
+#link3:hover{
+    box-shadow: var(--lg-shadow);
+    background-color: var(--burgundy);
+}
+
+/* TO DO: Add a transformation here so that the SVG grows to be 2 times its normal size on hover */
+#link3:hover svg{
+    stroke: var(--wht);
+}
+
+#link4{
+    background-color: var(--burgundy);
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+#link4 svg{
+    height: 44px;
+    width: 44px;
+    stroke: var(--wht);
+    transition: transform 500ms;
+}
+
+/* TO DO: Add a transformation here so that this image will spin in a complete circle on hover */
+#link4:hover svg{
+    
+}
+
+
+/* ---------- MEDIA QUERIES ---------- */
+@media screen and (min-width: 400px){
+    /* This adjusts the alignment on the hamburger menu so that it is more consistent with the display of the H1 */
+    #menuToggle{
+        top: 0;
+    }
+}
+
+@media screen and (min-width: 600px){
+    /* Most of the code in this media query is removing the display of the hamburger menu and replacing it with standard navigation on larger screens */
+    header{
+        flex-direction: column;
+    }
+
+    #menuToggle{
+        position: static;
+        user-select: auto;
+    }
+
+    #menuToggle input{
+        display: none;
+    }
+
+    #menuToggle label{
+        display: none;
+    }
+
+    #menuToggle ul{
+        visibility: visible;
+    }
+
+    #menu{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        position: static;
+        padding: 1rem;
+        width: calc(100% - 2rem);
+        margin-top: 0;
+    }
+
+    #menuToggle a{
+        width: auto;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 640px){
+    /* This adjusts the distance that the icon in the iteration count example moves on larger screens so that it stays inside of its container */
+    @keyframes slide-in{
+        from{
+            transform: translate(0, 0);
+        }
+
+        to{
+            transform: translate(455px, 0);
+        }
+    }
+}

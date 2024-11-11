@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSS Animation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jessica Barnett">
+    <meta name="description" content="Learn the basics of CSS animation, transitions, and transformations.">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Anicons Animated Icons for Hamburger Menu -->
+    <link href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1581441981/Anicons/anicons-regular.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JavaScript (so we can pause/play animations) -->
+    <script src="scripts.js" defer></script>
+</head>
+
+<body>
+    <a href="#main-content" id="skip">Skip to Main Content</a>
+    <header>
+        <h1>CSS Animation</h1>
+        <nav>
+            <div id="menuToggle">
+                <input type="checkbox" name="toggle" id="toggle">
+                <label for="toggle">
+                    <span id="menuIcon">A</span>
+                </label>
+                <h2 class="sr-only">Main Navigation</h2>
+                <ul id="menu">
+                    <li><a href="#animation">Animation &amp; Keyframes</a></li>
+                    <li><a href="#transition">Transitions &amp; Timing</a></li>
+                    <li><a href="#transform">Transformations</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        
+        <section id="animation">
+            <h2>Animations &amp; Keyframes</h2>
+            <p>While you can use JavaScript to create animations on the web, you can also use just CSS. Using CSS offers some benefits:</p>
+            <ul>
+                <li>These do not require any JavaScript</li>
+                <li>They require fewer resources like memory, making them execute more quickly and appear smoother</li>
+                <li>The browser has control over these on tabs that are open but not currently being viewed.</li>
+            </ul>
+
+            <details>
+                <summary>The <code>animation</code> Property</summary>
+                <p>The <code>animation</code> property in CSS allows you to set the following (and more) in a shorthand:</p>
+                <ul>
+                    <li><code>animation-delay</code></li>
+                    <li><code>animation-direction</code></li>
+                    <li><code>animation-duration</code></li>
+                    <li><code>animation-iteration-count</code></li>
+                    <li><code>animation-name</code></li>
+                </ul>
+                <strong class="syntax">Syntax Example</strong>
+                <pre>
+                    <code>
+<!--                 -->animation: @keyframes | duration | easing-function | delay | iteration-count | direction | name;
+<!--                 -->animation: 3s ease-in 1s 2 reverse slide-in;
+                    </code>
+                </pre>
+                <div id="animate1">
+                    <img src="images/spinner.png" alt="" width="100" height="100">
+                    <button class="control" aria-label="pause or play the animation">
+                        <img src="images/play.svg" alt="" height="50" width="50" class="play">
+                        <img src="images/pause.svg" alt="" height="50" width="50" class="pause hidden">
+                    </button>
+                </div>
+            </details>
+
+            <details>
+                <summary>The <code>@keyframes</code> Rule</summary>
+                <p>The <code>@keyframes</code> CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate steps of the animation sequence than transitions.</p>
+                <strong class="syntax">Syntax Example</strong>
+                <pre>
+                    <code>
+<!--                 -->@keyframes slide-in {
+<!--                 -->    from {
+<!--                 -->        transform: translateX(0%);
+<!--                 -->    }
+    
+<!--                 -->    to {
+<!--                 -->        transform: translateX(100%);
+<!--                 -->    }
+<!--                 -->}
+                    </code>
+                </pre>
+                <div id="animate2">
+                    <img src="images/heart.svg" alt="" width="100" height="100">
+                    <button class="control" aria-label="pause or play the animation">
+                        <img src="images/play.svg" alt="" height="50" width="50" class="play">
+                        <img src="images/pause.svg" alt="" height="50" width="50" class="pause hidden">
+                    </button>
+                </div>
+            </details>
+
+            <section id="timing">
+                <h3>Timing, Iteration Count, &amp; Direction</h3>
+                <p>Adjustments to the timing, count, and direction of your animations can also be made.</p>
+
+                <details>
+                    <summary>Timing Functions</summary>
+                    <strong class="syntax">Syntax Example</strong>
+                    <pre>
+                        <code>
+<!--                    -->/* Animation Shorthand: */
+<!--                    -->animation: @keyframes | duration | easing-function | delay | iteration-count | direction | name;
+
+<!--                    -->/* Options: ease, ease-in, ease-in-out, linear, cubic-bezier(n1, n2, n3, n4) */
+<!--                    -->
+<!--                    -->/* Examples: */
+<!--                    -->animate: spin 2s ease-in;
+<!--                    -->animation-timing-function: cubic-bezier(0.1, -0.6, 0.2, 0);
+                        </code>
+                    </pre>
+                    <div id="animate3">
+                        <img src="images/pinwheel.png" alt="" width="100" height="100">
+                        <button class="control" aria-label="pause or play the animation">
+                            <img src="images/play.svg" alt="" height="50" width="50" class="play">
+                            <img src="images/pause.svg" alt="" height="50" width="50" class="pause hidden">
+                        </button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Iteration Count</summary>
+                    <strong class="syntax">Syntax Example</strong>
+                    <pre>
+                        <code>
+<!--                    -->/* The iteration count is a number of times the animation should run from start to finish before stopping */
+<!--                    -->/* This property also accepts the keyword "infinite" for animations that won't stop running */
+<!--                    -->animation-iteration-count: number;
+<!--                    -->
+<!--                    -->animation-iteration-count: 2;
+<!--                    -->animate: grow 2s infinite;
+                        </code>
+                    </pre>
+                    <div id="animate4">
+                        <img src="images/happy.png" alt="" width="100" height="100">
+                        <button class="control" aria-label="pause or play the animation">
+                            <img src="images/play.svg" alt="" height="50" width="50" class="play">
+                            <img src="images/pause.svg" alt="" height="50" width="50" class="pause hidden">
+                        </button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Animation Direction</summary>
+                    <strong class="syntax">Syntax Example</strong>
+                    <pre>
+                        <code>
+<!--                    -->/* Available Settings: */
+<!--                    -->normal, reverse, alternate, alternate-reverse
+<!--                    -->
+<!--                    -->animation-direction: reverse;
+<!--                    -->animation: spin 2s ease-in-out 1s infinite alternate;
+                        </code>
+                    </pre>
+                    <div id="animate5">
+                        <img src="images/arrow.png" alt="" width="100" height="100">
+                        <button class="control" aria-label="pause or play the animation">
+                            <img src="images/play.svg" alt="" height="50" width="50" class="play">
+                            <img src="images/pause.svg" alt="" height="50" width="50" class="pause hidden">
+                        </button>
+                    </div>
+                </details>
+            </section>
+        </section>
+
+        <section id="transition">
+            <h2>Transitions &amp; Transition Timing Functions</h2>
+            <p>Transitions are very helpful for making the change between a hover state and a normal state more smooth, but can be used for other purposes as well. They are simple to add to CSS and improve interaction.</p>
+
+            <details>
+                <summary>Transition on Hover</summary>
+                <strong class="syntax">Syntax Example</strong>
+                <pre>
+                    <code>
+<!--                    -->a{
+<!--                    -->    background-color: blue;
+<!--                    -->    transition: background-color 2s;
+<!--                    -->}
+
+<!--                    -->a:hover{
+<!--                    -->    background-color: green;        
+<!--                    -->}            
+                    </code>
+                </pre>
+                <a href="#" id="link1">Link Text</a>
+            </details>
+
+            <details>
+                <summary>Another Transition</summary>
+                <a href="#" id="link2">Link Text</a>
+            </details>
+        </section>
+
+        <section id="transform">
+            <h2>Transformations</h2>
+            <p>A CSS <code>transformation</code> does just what it sounds like it does. Use this property to move, scale, rotate, or otherwise alter the appearance of your elements. These can be combined with animations and/or transitions as well.</p>
+            <details>
+                <summary>Transforming By Scale</summary>
+                <a href="#" id="link3" aria-label="Go to Home Page">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                        <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
+                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+                    </svg>
+                </a>
+            </details>
+            <details>
+                <summary>Transforming By Rotation</summary>
+                <a href="#" id="link4" aria-label="Go to Home Page">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                        <path d="M12 8l-4 4"></path>
+                        <path d="M12 8v8"></path>
+                        <path d="M16 12l-4 -4"></path>
+                    </svg>
+                </a>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2024 - Prof. Barnett</p>
+        <p>For educational purposes only</p>
+    </footer>
+</body>
+
+</html>
